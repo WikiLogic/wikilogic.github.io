@@ -1,5 +1,6 @@
 ---
 template: index.hbt
+title: Client
 ---
 
 

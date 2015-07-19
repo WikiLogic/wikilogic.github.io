@@ -4,8 +4,52 @@
     <meta charset="UTF-8" />
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="http://wikilogic.github.io/stylesheets/normalize.css">
+    <link rel="stylesheet" href="http://wikilogic.github.io/stylesheets/github-light.css">
+    <link rel="stylesheet" href="http://wikilogic.github.io/stylesheets/stylesheet.css">
 </head>
 <body>
+
+	<section class="page-header">
+		<h1 class="project-name">Wikilogic-0.3</h1>
+		<h2 class="project-tagline">The third prototype, making everything more modular</h2>
+		<a href="https://github.com/WikiLogic/WikiLogic-0.3" class="btn">View on GitHub</a>
+		<a href="https://github.com/WikiLogic/WikiLogic-0.3/zipball/master" class="btn">Download .zip</a>
+		<a href="https://github.com/WikiLogic/WikiLogic-0.3/tarball/master" class="btn">Download .tar.gz</a>
+	</section>
+
+	<!-- Navigation -->
+	<ul>
+	    {{#each navs.primary}}
+	        <li>
+			    {{!--
+			        currentNavNode.file
+			    --}}
+			    {{#if file}}
+			        {{!--
+			            @root === the template scope of the current file object being rendered
+			            @root.nav_path === currentFileObject.nav_path
+			            ('nav_path' property can be configured by navConfig.pathProperty = 'nav_path')
+
+			            path === currentNavNode.path
+			            (path property is set to all nav nodes)
+			        --}}
+			        <a href="{{relative_path @root.nav_path path}}">{{file.title}}</a>
+
+			    {{else}}
+			        {{title}}
+			    {{/if}}
+			    {{#if children}}
+			    <ul>
+			        {{#each children}}
+			            {{> nav__children}}
+			        {{/each}}
+			    </ul>
+			    {{/if}}
+			</li>
+	    {{/each}}
+	</ul>
+
     <div class="main-wrapper">
         {{{ contents }}}
     </div>
