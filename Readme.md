@@ -1,6 +1,15 @@
 
-# static-site
+# The WikiLogic Docs
 
-This example uses Metalsmith to make a static site. To test it out yourself just run:
+Hosted by Github  
+Built with Metalsmith
 
-    $ make build
+---
+
+To contribute:
+
+* Clone this Repo
+* npm install
+* make the changes!
+* node build
+* push / pull request
