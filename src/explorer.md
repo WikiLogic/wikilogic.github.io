@@ -1,6 +1,7 @@
 ---
 template: index.hbt
-nav_sort: 1
+title: Explorer
+nav_sort: 2
 nav_groups:
   - primary
   - footer

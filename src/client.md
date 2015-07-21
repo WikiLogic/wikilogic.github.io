@@ -1,6 +1,10 @@
 ---
 template: index.hbt
 title: Client
+nav_sort: 2
+nav_groups:
+  - primary
+  - footer
 ---
 
 

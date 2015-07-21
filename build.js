@@ -8,16 +8,17 @@ var metalsmith = require('metalsmith'),
 /* nav settings: https://github.com/unstoppablecarl/metalsmith-navigation
 --------------------------------------------------*/
 var navConfigs = {
-    header: {
-        sortBy: false,
-        sortByNameFirst: true,
-        filterProperty: false,
-        filterValue: false,
-        breadcrumbProperty: 'breadcrumb_path',
-        pathProperty: 'nav_path',
-        childrenProperty: 'nav_children',
-        mergeMatchingFilesAndDirs: true,
-        includeDirs: false,
+    primary:{
+        sortBy: 'nav_sort',
+        filterProperty: 'nav_groups',
+        includeDirs: true
+
+    },
+    footer: {
+        sortBy: 'nav_sort',
+        filterProperty: 'nav_groups',
+        includeDirs: true
+
     }
 };
 var navSettings = {
@@ -25,14 +26,16 @@ var navSettings = {
     permalinks: true,
 };
 
-/*
+var navTask = navigation(navConfigs, navSettings);
+
+/* The docs site
 ------------------------------------------------------------*/
 
-var siteBuild = metalsmith(__dirname)
+var docsBuild = metalsmith(__dirname)
   .metadata({
     site: {
       title: 'WikiLogic Docs',
-      url: 'http://wikilogic.github.io/WikiLogic-0.3/'
+      url: 'http://wikilogic.github.io/docs/'
     }
   })
   .source('./src')
@@ -47,7 +50,7 @@ var siteBuild = metalsmith(__dirname)
   .use(permalinks({
     pattern: ':title'
   }))
-  .use(navigation(navConfigs, navSettings))
+  .use(navTask)
   .build(function (err) {
     if (err) {
       console.log(err);
