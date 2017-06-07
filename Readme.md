@@ -2,7 +2,7 @@
 # The WikiLogic Docs
 
 Hosted by Github  
-Built with Metalsmith
+https://docsify.js.org
 
 ---
 
