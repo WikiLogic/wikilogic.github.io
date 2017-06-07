@@ -1,5 +1,5 @@
 
-# The WikiLogic Docs
+# Wikilogic Contributor Docs
 
 Hosted by Github built with https://docsify.js.org
 
