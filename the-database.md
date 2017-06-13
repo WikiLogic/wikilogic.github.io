@@ -9,7 +9,9 @@ You will need git & Docker installed.
 3. `docker run -p 7474:7474 -p 7687:7687 --env NEO4J_AUTH=neo4j/neo5j wikilogic_dev_db` (set whatever password you want in here)
 4. open [http://localhost:7474](http://localhost:7474) and log in to see your db!
 
-When you run `docker build ...` it uses the Dockerfile from the repo to create an "image" from which a container can be spun up. `docker run ...` is the command that does the spinning up. 
+When you run `docker build ...` it uses the Dockerfile from the repo to create an "image" from which a container can be spun up. 
+
+`docker run ...` is the command that does the spinning up. 
 
 Some helpful docker commands:
 
