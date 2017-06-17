@@ -1,7 +1,7 @@
 
 # Wikilogic Contributor Docs
 
-Hosted by Github built with https://docsify.js.org
+http://wikilogic.github.io
 
 ---
 
@@ -35,3 +35,7 @@ Give an overview of the build tools & installation
  - Stop container `docker stop <container name>`
  - Delete all images `docker rmi $(docker images -q)`
  - Delete all containers `docker rm $(docker ps -a -q)`
+
+ ---
+
+ Hosted by Github built with https://docsify.js.org
