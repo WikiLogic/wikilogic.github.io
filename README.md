@@ -9,25 +9,26 @@ Quick overview of what WikiLogic is, link to the foundation site for more detail
 
 ---
 
-## Architecture
+## How to get it up and running
 
-Give an overview of how the project is set up.
+You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) installed.
 
-## Set up to contribute
+Currently WL requires three repos to be cloned, the database repo, the API server repo and the Front End / proxy server repo. We suggest creating a `wikilogic` directory wherever you usually create projects with one caveat: if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. The reason is to do with VirtualBox, volumes, and permissions... we'll get to that! This is what you're aiming for:
 
-Give an overview of the build tools & installation
+ - **/wikilogic** (create this directory and cd in)
+    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git`)
+    - **/api** (`git clone https://github.com/WikiLogic/api.git`)
+    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git`)
 
-### Setting up the Front End locally
+One last thing to get, download the **docker-compose.dev.yml** file from this repo and place it in the **/wikilogic** directory.
 
-### Setting up the API server locally
+_TODO: automate the above_
 
-### Setting up the Database locally
+Now you have all the code, you're ready to boot it all up! From the **/wikilogic** directory run `docker-compose -f docker-compose.dev.yml up`. The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and you should eventually see some logging beginning with `db_1` / `webpack_1` / `api_1`. when you see something like this: `db_1       | 2017-06-19 00:20:45.619+0000 INFO  Started.` you should be good to go!
 
-### Setting up the docs site locally
+_Note: due to some weird virtualbox / volume / docker bug files from your host system that are shared with the containers may not update properly. We are activley working on this issue - if you have any insight, let us know!_
 
-### Setting up the foundation site locally
-
----
+Some helpful docker commands:
 
  - List docker images: `docker images`
  - List running containers: `docker ps`

@@ -1,0 +1,44 @@
+# This is the local development version of docker-compose. We need access to everything so we expose all the ports!
+version: '3'
+services:
+  db:
+    build:
+      context: ./Neo4JProcedures/
+      dockerfile: Dockerfile
+    ports:
+     - "7474:7474"
+     - "7687:7687"
+    environment:
+    - NEO4J_AUTH=neo4j/neo5j #username has to be neo4j
+    volumes:
+    - /c/Users/ijmcc/Projects/Wikilogic/data:/data
+  api:
+    build: 
+      context: ./api/
+      dockerfile: Dockerfile-dev
+    volumes:
+    - /c/Users/ijmcc/Projects/Wikilogic/api/api-server.js:/var/www/api/api-server.js
+    - /c/Users/ijmcc/Projects/Wikilogic/api/read:/var/www/api/read
+    - /c/Users/ijmcc/Projects/Wikilogic/api/write:/var/www/api/write
+    - /c/Users/ijmcc/Projects/Wikilogic/api/neo4j:/var/www/api/neo4j
+    ports:
+    - "3030:3030"
+  webpack: #builds the static code
+    build:
+      context: ./react-app/
+      dockerfile: Dockerfile-dev-webpack
+    volumes:
+    - /c/Users/ijmcc/Projects/Wikilogic/react-app/src:/wldev/src
+    - /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/wldev/dist
+    ports:
+    - "8080:8080"
+  proxy: #serves the static code & proxies requests from /api to the api container
+    build:
+      context: ./react-app/
+      dockerfile: Dockerfile-dev-proxy
+    volumes:
+    - /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/var/www/app
+    links:
+    - api
+    depends_on:
+    - api
