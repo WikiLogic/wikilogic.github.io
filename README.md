@@ -16,11 +16,11 @@ You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) in
 Currently WL requires three repos to be cloned, the database repo, the API server repo and the Front End / proxy server repo. We suggest creating a `wikilogic` directory wherever you usually create projects with one caveat: if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. The reason is to do with VirtualBox, volumes, and permissions... we'll get to that! This is what you're aiming for:
 
  - **/wikilogic** (create this directory and cd in)
-    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git`)
-    - **/api** (`git clone https://github.com/WikiLogic/api.git`)
-    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git`)
+    - `git clone https://github.com/WikiLogic/react-app.git` (should create a **/react-app** directory with the front end code)
+    - `git clone https://github.com/WikiLogic/api.git` (should create an **/api** directory with the api code)
+    - `git clone https://github.com/WikiLogic/Neo4JProcedures.git` (should create a **/Neo4JProcedures** directory with the db code)
 
-One last thing to get, download the **docker-compose.dev.yml** file from this repo and place it in the **/wikilogic** directory.
+One last thing to get, download the [**docker-compose.dev.yml**](wikilogic.github.io/docker-compose.dev.yml) file from this repo and place it in the **/wikilogic** directory.
 
 _TODO: automate the above_
 
