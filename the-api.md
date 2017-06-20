@@ -8,7 +8,7 @@ You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) in
 
 1. Clone the repo: `git clone https://github.com/WikiLogic/api.git`
 2. From the repo's root (cd in) run `docker build -f Dockerfile-dev -t wikilogic_dev_api .` (note the `.`, it's important!) This creates an image from which many containers can be spun up, like a blueprint.
-3. Start up the container with some options: `docker run -p 3030:3030 -v /c/Users/ijmcc/Projects/Wikilogic/data:/data wikilogic_dev_api`
+3. Start up the container with some options: `docker run -p 3030:3030 -v /c/Users/ijmcc/Projects/Wikilogic/api/api-server.js:/var/www/api/api-server.js -v /c/Users/ijmcc/Projects/Wikilogic/api/read:/var/www/api/read -v /c/Users/ijmcc/Projects/Wikilogic/api/write:/var/www/api/write -v /c/Users/ijmcc/Projects/Wikilogic/api/neo4j:/var/www/api/neo4j wikilogic_dev_api`
     - `-v` maps a directory from the container into your host system in order to save any data you enter in. **It's important to change the above command to match your local set up** as I doubt your username is also "ijmcc". Note that it requires an absolute path, no "./data" unfortunatly. We will be creating demo / dev data but in the mean time, if you have interesting demo data to share, get in contact with us! Either an issue or the foundation website should be good places to go.
 4. open [http://localhost:3030](http://localhost:3030) to see your new local API server!
 5. 
