@@ -11,16 +11,16 @@ services:
     environment:
     - NEO4J_AUTH=neo4j/neo5j #username has to be neo4j
     volumes:
-    - /c/Users/ijmcc/Projects/Wikilogic/data:/data
+    - ./data:/data
   api:
     build: 
       context: ./api/
       dockerfile: Dockerfile-dev
     volumes:
-    - /c/Users/ijmcc/Projects/Wikilogic/api/api-server.js:/var/www/api/api-server.js
-    - /c/Users/ijmcc/Projects/Wikilogic/api/read:/var/www/api/read
-    - /c/Users/ijmcc/Projects/Wikilogic/api/write:/var/www/api/write
-    - /c/Users/ijmcc/Projects/Wikilogic/api/neo4j:/var/www/api/neo4j
+    - ./api/api-server.js:/var/www/api/api-server.js
+    - ./api/read:/var/www/api/read
+    - ./api/write:/var/www/api/write
+    - ./api/neo4j:/var/www/api/neo4j
     ports:
     - "3030:3030"
   webpack: #builds the static code
@@ -28,8 +28,8 @@ services:
       context: ./react-app/
       dockerfile: Dockerfile-dev-webpack
     volumes:
-    - /c/Users/ijmcc/Projects/Wikilogic/react-app/src:/wldev/src
-    - /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/wldev/dist
+    - ./react-app/src:/wldev/src
+    - ./react-app/dist:/wldev/dist
     ports:
     - "8080:8080"
   proxy: #serves the static code & proxies requests from /api to the api container
@@ -37,7 +37,7 @@ services:
       context: ./react-app/
       dockerfile: Dockerfile-dev-proxy
     volumes:
-    - /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/var/www/app
+    - ./react-app/dist:/var/www/app
     links:
     - api
     depends_on:
