@@ -42,3 +42,5 @@ services:
     - api
     depends_on:
     - api
+    ports:
+    - "80:80"
