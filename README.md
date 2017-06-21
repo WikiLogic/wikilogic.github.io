@@ -37,7 +37,7 @@ That's the application code in place. Each repo has it's own Dockerfile(s) that 
 
  - http://localhost/ for the app
  - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
- - http://localhost:7474 for the db (un neo4j pw neo5j if you're running in dev mode)
+ - http://localhost:7474 for the db (un neo4j pw neo5j if you're running in dev mode, which you will be if you're following these instructions)
 
 ### Problems
 
