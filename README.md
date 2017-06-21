@@ -5,7 +5,7 @@ http://wikilogic.github.io
 
 ---
 
-This site is aimed at those who wish to contribute, or just find out about, the technical side of WikiLogic. For information on why and what it is please refer to [www.wikilogicfoundation.org](http://www.wikilogicfoundation.org/).
+This site is aimed at those who wish to contribute, or just find out about, the technical side of Wikilogic. For information on why and what it is please refer to [www.wikilogicfoundation.org](http://www.wikilogicfoundation.org/).
 
 ---
 
