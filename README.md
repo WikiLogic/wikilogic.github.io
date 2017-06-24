@@ -1,7 +1,7 @@
 
 # Wikilogic Contributor Docs
 
-http://wikilogic.github.io
+`docker-compose -f docker-compose.dev.yml up`
 
 ---
 
