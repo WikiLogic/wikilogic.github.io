@@ -11,7 +11,8 @@
 ## Pushing up data manually
 
  - connect as above
- - `docker-machine scp -r ./path/to/wherever/data wikilogic:/`
+ - copy the data up `docker-machine scp -r ./data wikilogic:/`
+ - restart? `docker-compose up -d` Seems like the container needs to restert for data updates to take effect. bu just doing a build doesn't always do it. So far the only way I've figured out is to ssh on, stop the container, exit and run `docker-compose up -d`
 
 ## Automated backups
 
