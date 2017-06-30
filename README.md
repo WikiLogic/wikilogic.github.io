@@ -1,7 +1,11 @@
 
 # Wikilogic Contributor Docs
 
-`docker-compose -f docker-compose.dev.yml up`
+---
+
+Quick reference:
+
+ - Start Dev: `docker-compose -f docker-compose.dev.yml up`
 
 ---
 
