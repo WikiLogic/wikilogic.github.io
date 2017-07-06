@@ -49,4 +49,6 @@ The [one article](https://rominirani.com/docker-tutorial-series-part-7-data-volu
 
 Set up for developing them...
 
+`docker build -t my-maven -f Dockerfile.dev .` (being worked on - not working yet)
+
 An explanation of each...
