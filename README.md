@@ -53,16 +53,7 @@ That's the application code in place. Each repo has it's own Dockerfile(s) that 
 
 _Any more problems that you're stuck on, open an issue here https://github.com/WikiLogic/wikilogic.github.io/issues - we want to help! Even if you had a problem which you managed to resolve, we would still welcome an issue - it might help someone else._
 
----
 
-Some helpful docker commands:
-
- - List docker images: `docker images`
- - List running containers: `docker ps`
- - List all containers: `docker ps -a`
- - Stop container `docker stop <container name>`
- - Delete all images `docker rmi $(docker images -q)`
- - Delete all containers `docker rm $(docker ps -a -q)`
 
  ---
 
