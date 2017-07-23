@@ -7,12 +7,18 @@
 
 ---
 
-Some helpful docker commands:
+ Some helpful docker commands:
 
- - List images: `docker images`
- - List running containers: `docker ps`
- - List all containers: `docker ps -a`
- - Stop container `docker stop <container name>`
- - Start container `docker start <container name>`
- - Delete all images `docker rmi $(docker images -q)`
- - Delete all containers `docker rm $(docker ps -a -q)`
+
+ - Start dev containers: <br />`docker-compose -f docker-compose.dev.yml up`
+ - Start prod containers: <br />`docker-compose up`
+
+
+ - List containers: <br />`docker ps -a`
+ - Stop container <br />`docker stop <container name>`
+ - Start container <br />`docker start <container name>`
+ - Delete all containers <br />`docker rm $(docker ps -a -q)`
+
+
+ - List images: <br />`docker images`
+ - Delete all images <br />`docker rmi $(docker images -q)`
