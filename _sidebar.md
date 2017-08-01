@@ -16,6 +16,7 @@
 
  - List containers: <br />`docker ps -a`
  - Stop container <br />`docker stop <container name>`
+ - Stop all <br />`docker stop $(docker ps -a -q)`
  - Start container <br />`docker start <container name>`
  - Delete all containers <br />`docker rm $(docker ps -a -q)`
 
