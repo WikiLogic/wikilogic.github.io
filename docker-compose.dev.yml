@@ -12,6 +12,7 @@ services:
     - NEO4J_AUTH=neo4j/neo5j #username has to be neo4j
     volumes:
     - ./data:/data
+    - ./plugins:/plugins
   api:
     build: 
       context: ./api/
