@@ -24,14 +24,18 @@ We are running several services each inside their own [docker](https://www.docke
 
 ## How to get Wikilogic running locally in development mode
 
-You will need [git](https://git-scm.com/downloads) & [Docker](https://www.docker.com/community-edition) installed.
+You will need [git](https://git-scm.com/downloads), [Docker](https://www.docker.com/community-edition), and [Node](https://nodejs.org) installed.
 
 Currently WL requires three repos to be cloned, the database repo, the API server repo and the Front End / proxy server repo. We suggest creating a `wikilogic` directory wherever you usually create projects with one caveat: if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. This is because Docker uses Virtualbox to spin up a linux VM within which the docker magic can run. Virtualbox shares `Users` for OSX and `/c/Users/you/` for Windows by default. Though it is possible to change these if you want. So this is the project structure you're aiming at:
 
  - **/wikilogic** (create this directory and cd in)
-    - `git clone https://github.com/WikiLogic/react-app.git` (should create a **/react-app** directory with the front end code)
-    - `git clone https://github.com/WikiLogic/api.git` (should create an **/api** directory with the api code)
-    - `git clone https://github.com/WikiLogic/Neo4JProcedures.git` (should create a **/Neo4JProcedures** directory with the db code)
+    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git` into here)
+    - **/api** (`git clone https://github.com/WikiLogic/api.git` into here)
+    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git` into here)
+
+That's the WL application code in place, now we need to install the npm modules for the react-app and the api.
+ - cd into **/react-app** and run `npm install`
+ - cd into **/api** and run `npm install`
 
 That's the application code in place. Each repo has it's own Dockerfile(s) that are used to create a container for that service. To run the whole thing with the correct preconfiguration download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory. From there run `docker-compose -f docker-compose.dev.yml up`. The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and you should eventually see something like this: `db_1       | 2017-06-19 00:20:45.619+0000 INFO  Started.` If all has gone to plan you now have Wikilogic and all it's dev tooling up and running!
 
