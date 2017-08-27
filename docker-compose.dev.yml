@@ -2,26 +2,38 @@
 version: '3'
 services:
   db:
-    build:
-      context: ./Neo4JProcedures/
-      dockerfile: Dockerfile
+    build: ./Neo4JProcedures/
     ports:
      - "7474:7474"
      - "7687:7687"
     environment:
     - NEO4J_AUTH=neo4j/neo5j #username has to be neo4j
     volumes:
-    - ./data:/data
-    - ./plugins:/plugins
+    - ./Neo4JProcedures/data:/data
+  arango:
+    image: arangodb/arangodb:3.2.2
+    ports:
+    - "8529:8529"
+    environment:
+    - ARANGO_NO_AUTH=1
+    volumes:
+    - ./ArangoDB/data:/var/lib/arangodb-apps/_db
   api:
     build: 
       context: ./api/
       dockerfile: Dockerfile-dev
     volumes:
     - ./api/api-server.js:/var/www/api/api-server.js
-    - ./api/read:/var/www/api/read
-    - ./api/write:/var/www/api/write
-    - ./api/neo4j:/var/www/api/neo4j
+    - ./api/src:/var/www/api/src
+    links:
+    - db
+    - arango
+    depends_on:
+    - db
+    - arango
+    environment:
+    - NEO4J_URL=http://neo4j:neo5j@db:7474
+    - ARANGO_URL=http://arango:8529
     ports:
     - "3030:3030"
   webpack: #builds the static code
@@ -39,9 +51,11 @@ services:
       dockerfile: Dockerfile-dev-proxy
     volumes:
     - ./react-app/dist:/var/www/app
+    - ./letsencrypt/live/demo.wikilogicfoundation.org:/root/ssl
     links:
     - api
     depends_on:
     - api
     ports:
     - "80:80"
+    - "443:443"
