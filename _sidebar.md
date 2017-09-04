@@ -23,3 +23,6 @@
 
  - List images: <br />`docker images`
  - Delete all images <br />`docker rmi $(docker images -q)`
+ - Delete all volumes <br />`docker volume ls -q -f dangling=true`
+ - Delete all containers <br />`docker rm $(docker ps -a -q)`
+
