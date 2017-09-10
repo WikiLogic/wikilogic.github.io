@@ -21,7 +21,7 @@ You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) in
 The proxy server
 
 `docker build -f Dockerfile-dev-proxy -t wikilogic_dev_proxy .`
-`docker run -p 80:80 -v /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/var/www/app wikilogic_dev_proxy`
+`docker run -p 80:80 -p 443:443 -v /c/Users/ijmcc/Projects/Wikilogic/react-app/dist:/var/www/app -v /c/Users/ijmcc/Projects/Wikilogic/react-app/letsencrypt:/root/ssl wikilogic_dev_proxy`
 
 ### Problems
 

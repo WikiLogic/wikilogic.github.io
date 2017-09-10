@@ -1,0 +1,1 @@
+`npm test -- env UN=YOUR_USERNAME PW=YOUR_PASWORD`

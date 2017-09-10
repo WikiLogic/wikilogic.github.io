@@ -24,17 +24,6 @@ You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) in
 
 ---
 
-Some helpful docker commands:
-
- - List docker images: `docker images`
- - List docker containers: `docker ps -a`
- - Stop container `docker stop <container name>`
- - Start container `docker start <container name>` (give it a few to boot up neo4j)
- - Delete all images `docker rmi $(docker images -q)`
- - Delete all containers `docker rm $(docker ps -a -q)`
-
----
-
 The [one article](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72) I found helpful in figuring out volumes.
 
 ---

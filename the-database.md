@@ -24,16 +24,6 @@ You will need [git](https://git-scm.com/) & [Docker](https://www.docker.com/) in
 
 ---
 
-Some helpful docker commands:
-
- - List docker images: `docker images`
- - List docker containers: `docker ps -a`
- - Stop container `docker stop <container name>`
- - Start container `docker start <container name>` (give it a few to boot up neo4j)
- - Delete all images `docker rmi $(docker images -q)`
- - Delete all containers `docker rm $(docker ps -a -q)`
-
----
 
 The [one article](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72) I found helpful in figuring out volumes.
 
@@ -45,8 +35,17 @@ The [one article](https://rominirani.com/docker-tutorial-series-part-7-data-volu
 
 ---
 
-## The Wikilogic procedures
+## Developing Wikilogic Procedures
 
-Set up for developing them...
+_Procedures are functions that have been added to Neo4j so that you can call them from the cypher queries._
+
+Currently Procedures can only be written in Java. So this part of the project will require you to set up a local development environment (unless you konw how to set one up through Docker, in which case please PR that!). 
+
+How ever you do it, set up your dev envionment to compile jar files to ./plugins. This folder is copied into the Neo4j docker container so it should pick up the new jar file when you run it.
+
+
+Set up for developing them.
+
+`docker build -t my-maven -f Dockerfile.dev .` (being worked on - not working yet)
 
 An explanation of each...
