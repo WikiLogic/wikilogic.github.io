@@ -6,7 +6,6 @@
 Quick reference:
 
  - Start Dev: `docker-compose -f docker-compose.dev.yml up`
- - Run tests: `npm start -- env UN=YOUR_USERNAME PW=YOUR_PASWORD`
  
 ---
 
@@ -22,58 +21,61 @@ In development mode the ports are opened to make life a bit easier.
 
 ```
           +---------------+
-          |               |
-          |   React App   |
-          |               |
+          |               | To develop: cd into the repo and run `npm start`
+          |   React App   | /src is compiled into /dist by webpack
+          |               | /dist is served by the static/proxy server below
           +---------------+
                   |
         +--------------------+
         |                    |
-        |   Static / proxy   |
+        |   Static / proxy   | nginx.conf files for this are in the react-app repo
         |                    |
         +--------------------+
                   |
          +-----------------+
-         |                 |
-         |   Express API   |
-         |                 |
+         |                 | In development mode this is run by nodemon so just start typig!
+         |   Express API   | cd into the test repo and run `npm start` to run the api
+         |                 | test suit.
          +-----------------+
             |           |
  +--------------+   +--------------+
- |              |   |              |
+ |              |   |              | We are in the process of replacing neo with arango
  |   Neo4j db   |   |   Arangodb   |
  |              |   |              |
  +--------------+   +--------------+
 ```
 
+This docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io), update the markdown files and push to update this site.
 
-We are running several services each inside their own [docker](https://www.docker.com/what-docker) containers:
+The [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) site runs on WordPress and the theme has [it's own repo](https://github.com/WikiLogic/foundation) too.
 
- - The core is our graph Database: [Neo4j](https://neo4j.com/). Updates are propogated by a few [procedures](http://neo4j.com/docs/developer-manual/current/extending-neo4j/procedures/) written in Java (that's the language of Neo!)
- - This data is exposed to the world through our API, an [Express](https://expressjs.com/) server running on [Node](https://nodejs.org). This is the only container (so far) that can talk to the db container.
- - The UI is a [React](https://facebook.github.io/react/) app served by [Nginx](https://nginx.org) which also acts as a proxy for the API. All web requests come through this service. The plan is to turn this into a load balancer when the time comes.
- - For development the UI code is compiled using [Webpack](https://webpack.js.org/) which lives in a 4th dev only container.
-
- As an aside, these docs are built with [docsify](https://docsify.js.org) which uses [Vue](https://vuejs.org/) just to throw in another JS framework. And to take it even further, the foundation site runs on [WordPress](https://wordpress.org/) - the theme for that also has [it's own repo](https://github.com/WikiLogic/foundation). So there are plenty of places to get stuck in!
+So there are plenty of places to get stuck in!
 
 ---
 
 ## How to get Wikilogic running locally in development mode
 
-You will need [git](https://git-scm.com/downloads), [Docker](https://www.docker.com/community-edition), and [Node](https://nodejs.org) installed.
+Have [git](https://git-scm.com/downloads), [Docker](https://www.docker.com/community-edition), and [Node](https://nodejs.org) installed.
 
-Currently WL requires three repos to be cloned, the database repo, the API server repo and the Front End / proxy server repo. We suggest creating a `wikilogic` directory wherever you usually create projects with one caveat: if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. This is because Docker uses Virtualbox to spin up a linux VM within which the docker magic can run. Virtualbox shares `Users` for OSX and `/c/Users/you/` for Windows by default. Though it is possible to change these if you want. So this is the project structure you're aiming at:
+Create a directory for all the wikilogic repos to go into - for those that run the main application they are required to be siblings on your file system. **Proect directory location caveat:** if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. This is because Docker uses Virtualbox to spin up a linux VM within which the docker magic can run. Virtualbox shares `Users` for OSX and `/c/Users/you/` for Windows by default. Though it is possible to change these if you want. 
 
- - **/wikilogic** (create this directory and cd in)
-    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git` into here)
-    - **/api** (`git clone https://github.com/WikiLogic/api.git` into here)
-    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git` into here)
+This is what you're aiming for:
 
-That's the WL application code in place, now we need to install the npm modules for the react-app and the api.
- - cd into **/react-app** and run `npm install`
- - cd into **/api** and run `npm install`
+ - **/wikilogic**
+    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git`)
+    - **/api** (`git clone https://github.com/WikiLogic/api.git`)
+    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git`)
+    - **/Testing** (`git clone https://github.com/WikiLogic/testing.git`)
+    - **/wikilogic.github.io** (`git clone https://github.com/WikiLogic/wikilogic.github.io.git`)
 
-That's the application code in place. Each repo has it's own Dockerfile(s) that are used to create a container for that service. To run the whole thing with the correct preconfiguration download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory. From there run `docker-compose -f docker-compose.dev.yml up`. The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and you should eventually see something like this: `db_1       | 2017-06-19 00:20:45.619+0000 INFO  Started.` If all has gone to plan you now have Wikilogic and all it's dev tooling up and running!
+To run everything in Docker download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory. Now run the command at the very top of this page!
+
+The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
+```
+db_1       | 2017-06-19 00:20:45.619+0000 INFO  Started.
+```
+
+_Tip - don't close the docker console, if there are errors while you're developing you'll want to be seeing them as they happen._
 
  - http://localhost/ for the app
  - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
