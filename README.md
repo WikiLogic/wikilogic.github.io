@@ -11,6 +11,37 @@ This site is aimed at those who wish to contribute, or just find out about, the 
 
 ## A quick overview of the architecture
 
+Each box below is a docker container.  
+In production mode only the proxy server & static files are accessable.  
+In development mode the ports are opened to make life a bit easier.
+
+```
+          +---------------+
+          |               |
+          |   React App   |
+          |               |
+          +---------------+
+                  |
+        +--------------------+
+        |                    |
+        |   Static / proxy   |
+        |                    |
+        +--------------------+
+                  |
+         +-----------------+
+         |                 |
+         |   Express API   |
+         |                 |
+         +-----------------+
+            |           |
+ +--------------+   +--------------+
+ |              |   |              |
+ |   Neo4j db   |   |   Arangodb   |
+ |              |   |              |
+ +--------------+   +--------------+
+```
+
+
 We are running several services each inside their own [docker](https://www.docker.com/what-docker) containers:
 
  - The core is our graph Database: [Neo4j](https://neo4j.com/). Updates are propogated by a few [procedures](http://neo4j.com/docs/developer-manual/current/extending-neo4j/procedures/) written in Java (that's the language of Neo!)
