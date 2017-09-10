@@ -6,7 +6,8 @@
 Quick reference:
 
  - Start Dev: `docker-compose -f docker-compose.dev.yml up`
-
+ - Run tests: `npm start -- env UN=YOUR_USERNAME PW=YOUR_PASWORD`
+ 
 ---
 
 This site is aimed at those who wish to contribute, or just find out about, the technical side of Wikilogic. For information on why and what it is please refer to [www.wikilogicfoundation.org](http://www.wikilogicfoundation.org/).
