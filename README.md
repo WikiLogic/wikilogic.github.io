@@ -5,7 +5,7 @@
 
 Quick reference:
 
- - Start Dev: `docker-compose -f docker-compose.dev.yml up`
+`docker-compose -f docker-compose.dev.yml up`
  
 ---
 
@@ -53,20 +53,22 @@ So there are plenty of places to get stuck in!
 
 ---
 
-## How to get Wikilogic running locally in development mode
+## Local development set up
+
+
+### How to get the code
 
 Have [git](https://git-scm.com/downloads), [Docker](https://www.docker.com/community-edition), and [Node](https://nodejs.org) installed.
 
-Create a directory for all the wikilogic repos to go into - for those that run the main application they are required to be siblings on your file system. **Proect directory location caveat:** if you're on a mac it should be somewhere under `Users` and if you're on a PC is should be somewhere under `/c/Users/you/`. This is because Docker uses Virtualbox to spin up a linux VM within which the docker magic can run. Virtualbox shares `Users` for OSX and `/c/Users/you/` for Windows by default. Though it is possible to change these if you want. 
+Create a directory somewhere for the wikilogic files to live.
 
-This is what you're aiming for:
+On Windows: Download the [wikilogic-setup.bat](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/wikilogic-setup.bat) file from the docs repo into the directory you created and run it.
 
- - **/wikilogic**
-    - **/react-app** (`git clone https://github.com/WikiLogic/react-app.git`)
-    - **/api** (`git clone https://github.com/WikiLogic/api.git`)
-    - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git`)
-    - **/Testing** (`git clone https://github.com/WikiLogic/testing.git`)
-    - **/wikilogic.github.io** (`git clone https://github.com/WikiLogic/wikilogic.github.io.git`)
+On Apples: ?
+
+_If you would rather set everything up manually, or the autmoated set up isn't working for you, we have [layed out the process here](setup-manually.md)_
+
+### How to run Wikilogic locally
 
 To run everything in Docker download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory. Now run the command at the very top of this page!
 
@@ -80,6 +82,7 @@ _Tip - don't close the docker console, if there are errors while you're developi
  - http://localhost/ for the app
  - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
  - http://localhost:7474 for the db (un neo4j pw neo5j if you're running in dev mode, which you will be if you're following these instructions)
+
 
 ### Problems
 
