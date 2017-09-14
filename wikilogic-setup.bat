@@ -16,6 +16,14 @@ curl https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/dock
     echo }
 )> "./api/guestlist.js"
 
+
+( 
+    echo {
+    echo     "username": "you",
+    echo     "password": "yours"
+    echo }
+)> "./testing/api-credentials.json"
+
 cd api
 call npm i
 pause
