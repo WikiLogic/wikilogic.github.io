@@ -12,3 +12,5 @@ This is what you're aiming for:
     - **/Neo4JProcedures** (`git clone https://github.com/WikiLogic/Neo4JProcedures.git`)
     - **/Testing** (`git clone https://github.com/WikiLogic/testing.git`)
     - **/wikilogic.github.io** (`git clone https://github.com/WikiLogic/wikilogic.github.io.git`)
+
+Finally you'll need to download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory.

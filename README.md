@@ -64,7 +64,7 @@ _If you would rather set everything up manually, or the automated set up isn't w
 
 ### How to run Wikilogic locally
 
-To run everything in Docker download the https://wikilogic.github.io/docker-compose.dev.yml file from this repo and place it in the **/wikilogic** directory. Now run the command at the very top of this page!
+In your naormal terminal (or the docker one if you have a docker terminal), cd into the wikilogic dictory and run `docker-compose -f docker-compose.dev.yml up`. It's also up at the top of this page for quick reference later on.
 
 The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
 ```
@@ -81,7 +81,7 @@ db_1      | Starting Neo4j.
 db_1      | 2017-09-14 01:24:50.882+0000 INFO  ======== Neo4j 3.0.11 ========
 db_1      | 2017-09-14 01:24:51.371+0000 INFO  Starting...
 db_1      | 2017-09-14 01:24:52.250+0000 INFO  Bolt enabled on 0.0.0.0:7687.
-db_1      | 2017-09-14 01:24:56.546+0000 INFO  Started.
+db_1      | 2017-09-14 01:24:56.546+0000 INFO  Started.c
 ```
 
 _Tip - don't close the docker console, if there are errors while you're developing you'll want to be seeing them as they happen._
