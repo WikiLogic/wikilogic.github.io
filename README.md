@@ -21,52 +21,46 @@ In development mode the ports are opened to make life a bit easier.
 
 ```
           +---------------+
-          |               | To develop: cd into the repo and run `npm start`
-          |   React App   | /src is compiled into /dist by webpack
+          |               | You need webpack running to develop the front end
+          |   React App   | cd into ./react-app and run `npm start`
           |               | /dist is served by the static/proxy server below
           +---------------+
                   |
         +--------------------+
         |                    |
-        |   Static / proxy   | nginx.conf files for this are in the react-app repo
+        |   Static / proxy   | server configuration lives in the react-app repo
         |                    |
         +--------------------+
                   |
          +-----------------+
-         |                 | In development mode this is run by nodemon so just start typig!
-         |   Express API   | cd into the test repo and run `npm start` to run the api
-         |                 | test suit.
+         |                 | There's a test suit set up in the testing repo 
+         |   Express API   | cd into /testing and run `npm start` to test
+         |                 | 
          +-----------------+
             |           |
  +--------------+   +--------------+
  |              |   |              | We are in the process of replacing neo with arango
- |   Neo4j db   |   |   Arangodb   |
+ |   Neo4j db   |   |   Arangodb   | Arango is less intence on our tight server budget.
  |              |   |              |
  +--------------+   +--------------+
 ```
 
-This docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io), update the markdown files and push to update this site.
-
-The [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) site runs on WordPress and the theme has [it's own repo](https://github.com/WikiLogic/foundation) too.
-
-So there are plenty of places to get stuck in!
+If you're not comfortable digging into the main codebase, this docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io) and [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) has a repo for it's [WordPress theme](https://github.com/WikiLogic/foundation). Either of which would be less intimidating places to help out.
 
 ---
 
 ## Local development set up
 
+The whole stack is orcastraited using [Docker](https://www.docker.com/community-edition) which you'll need to have installed. If you want to contribute to the front end you'll also need [Node](https://nodejs.org) set up.
 
 ### How to get the code
 
-Have [git](https://git-scm.com/downloads), [Docker](https://www.docker.com/community-edition), and [Node](https://nodejs.org) installed.
+Create a directory somewhere for the wikilogic files to live and download the setup script:
 
-Create a directory somewhere for the wikilogic files to live.
+ - [wikilogic-setup.bat](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/wikilogic-setup.bat) for windows
+ - ? for mac
 
-On Windows: Download the [wikilogic-setup.bat](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/wikilogic-setup.bat) file from the docs repo into the directory you created and run it.
-
-On Apples: ?
-
-_If you would rather set everything up manually, or the autmoated set up isn't working for you, we have [layed out the process here](setup-manually.md)_
+_If you would rather set everything up manually, or the automated set up isn't working for you, we have [layed out the process here](setup-manually.md)_
 
 ### How to run Wikilogic locally
 
@@ -74,7 +68,20 @@ To run everything in Docker download the https://wikilogic.github.io/docker-comp
 
 The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
 ```
-db_1       | 2017-06-19 00:20:45.619+0000 INFO  Started.
+db_1      | Starting Neo4j.
+db_1      | Started neo4j (pid 54). It is available at http://127.0.0.1:7474/
+arango_1  | 2017-09-14T01:24:36Z [1] INFO {syscall} file-descriptors (nofiles) hard limit is 1048576, soft limit is 1048576
+arango_1  | 2017-09-14T01:24:36Z [1] INFO Authentication is turned off, authentication for unix sockets is turned on
+api_1     | [nodemon] 1.12.0
+arango_1  | 2017-09-14T01:24:38Z [1] INFO using endpoint 'http+tcp://0.0.0.0:8529' for non-encrypted requests
+db_1      | There may be a short delay until the server is ready.
+db_1      | See /var/lib/neo4j/logs/neo4j.log for current status.
+db_1      | Stopping Neo4j.. stopped
+db_1      | Starting Neo4j.
+db_1      | 2017-09-14 01:24:50.882+0000 INFO  ======== Neo4j 3.0.11 ========
+db_1      | 2017-09-14 01:24:51.371+0000 INFO  Starting...
+db_1      | 2017-09-14 01:24:52.250+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+db_1      | 2017-09-14 01:24:56.546+0000 INFO  Started.
 ```
 
 _Tip - don't close the docker console, if there are errors while you're developing you'll want to be seeing them as they happen._
