@@ -13,3 +13,11 @@
  - Stop container <br />`docker stop <container name>`
  - Stop all <br />`docker stop $(docker ps -a -q)`
  - Start container <br />`docker start <container name>`
+ 
+ ---
+ 
+ ## Issues
+ 
+ ### Docker for Windows
+
+ - No data / files in the containers: open the docker for windows settings, a look for the shared drives, C:/ should be checked. (This can happen when you switch between using Windows containers and Linux containers.)
