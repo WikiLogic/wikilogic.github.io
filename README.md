@@ -93,6 +93,8 @@ _Tip - don't close the docker console, if there are errors while you're developi
 
 ### Problems
 
+**It won't let me sign up / log in**: Currently the API is only set up to allow certain emails to sign up. To add your email to this list on local, go into the API repo/guestlist.js and add your email to the people array. If guestlist.js doesn't exist, use the guestlist-example.js as a template. Note that the 2 test emails are required for the testing to run so they will need to be in your guestlist.js file as well. To help debug you can click on the users collection through the [db interface](http://localhost:8529/_db/wl_dev/_admin/aardvark/index.html#collections) when it's running locally.
+
 **Issues with shared drives**. Go into your settings for docker and enable it.
 
 **File updates not triggering webpack / nodemon**. On Windows or OSX, due to the docker host being inside a Virtualbox VM, FS events are not supported (by Virtualbox). Webpack has been set to polling and nodemon has been set to it's legacy watcher (also polling). Check that these polling options are still set.
