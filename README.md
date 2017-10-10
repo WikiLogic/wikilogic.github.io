@@ -25,24 +25,32 @@ In development mode the ports are opened to make life a bit easier.
           |   React App   | cd into ./react-app and run `npm start`
           |               | /dist is served by the static/proxy server below
           +---------------+
-                  |
-        +--------------------+
-        |                    |
+              |       |
+              |       |
+             /|       |/api                      The internet
+              |       |
+==============|=======|=========================================
+              |       |
+        Static|       |JSON data                  Our server
+         Files|       |
+              |       |
+        +-----|-------|------+
+        |     |       |      |
         |   Static / proxy   | server configuration lives in the react-app repo
-        |                    |
-        +--------------------+
-                  |
-         +-----------------+
-         |                 | There's a test suit set up in the testing repo 
+        |             |      |
+        +-------------|------+
+                      |
+         +------------|----+
+         |            |    | There's a test suit set up in the testing repo 
          |   Express API   | cd into /testing and run `npm start` to test
          |                 | 
          +-----------------+
-            |           |
- +--------------+   +--------------+
- |              |   |              | We are in the process of replacing neo with arango
- |   Neo4j db   |   |   Arangodb   | Arango is less intence on our tight server budget.
- |              |   |              |
- +--------------+   +--------------+
+                  |
+          +--------------+
+          |              | We are in the process of replacing neo with arango
+          |   Arangodb   | Arango is less intence on our tight server budget.
+          |              |
+          +--------------+
 ```
 
 If you're not comfortable digging into the main codebase, this docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io) and [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) has a repo for it's [WordPress theme](https://github.com/WikiLogic/foundation). Either of which would be less intimidating places to help out.
