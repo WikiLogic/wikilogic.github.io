@@ -109,6 +109,8 @@ _Tip - don't close the docker console, if there are errors while you're developi
 
 **File updates are not being served by nginx**. The production build turns on some caching goodness and nginx's `sendfile`. Turns out `sendfile` doesn't play well with the VM (not sure of the reaons, add them here / link to a stackoverflow if you know!). So these have both been turned off in nginx.dev.conf. Check they're still off.
 
+**Docker won't build** (eg `readdirent: not a directory`): stop the containers, clear out your images, run the build again. If that doesn't work, submit an issue and we'll try and get it worked out.
+
 _Any more problems that you're stuck on, open an issue here https://github.com/WikiLogic/wikilogic.github.io/issues - we want to help! Even if you had a problem which you managed to resolve, we would still welcome an issue - it might help someone else._
 
 
