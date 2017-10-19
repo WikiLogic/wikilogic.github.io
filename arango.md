@@ -1,0 +1,1 @@
+A good article that explains the way arango thinks about docuents and graphs: https://www.arangodb.com/2013/01/querying-documents-and-graphs-in-one-database-with-aql-easily/
