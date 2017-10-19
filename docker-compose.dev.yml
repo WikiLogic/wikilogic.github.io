@@ -1,15 +1,6 @@
 # This is the local development version of docker-compose. We need access to everything so we expose all the ports!
 version: '3'
 services:
-  db:
-    build: ./Neo4JProcedures/
-    ports:
-     - "7474:7474"
-     - "7687:7687"
-    environment:
-    - NEO4J_AUTH=neo4j/neo5j #username has to be neo4j
-    volumes:
-    - ./Neo4JProcedures/data:/data
   arango:
     image: arangodb/arangodb:3.2.2
     ports:
@@ -17,7 +8,7 @@ services:
     environment:
     - ARANGO_NO_AUTH=1
     volumes:
-    - ./ArangoDB/data:/var/lib/arangodb-apps/_db
+    - ./arangodb/data:/var/lib/arangodb
   api:
     build: 
       context: ./api/
@@ -26,29 +17,21 @@ services:
     - ./api/api-server.js:/var/www/api/api-server.js
     - ./api/src:/var/www/api/src
     links:
-    - db
     - arango
     depends_on:
-    - db
     - arango
     environment:
-    - NEO4J_URL=http://neo4j:neo5j@db:7474
-    - ARANGO_URL=http://arango:8529
+    - ARANGODB_HOST=arango
+    - ARANGODB_PORT=8529
+    - ARANGODB_USERNAME=root
+    - ARANGODB_PASSWORD=wlarango
+    - ARANGODB_DB=wl_db
     ports:
     - "3030:3030"
-  webpack: #builds the static code
-    build:
-      context: ./react-app/
-      dockerfile: Dockerfile-dev-webpack
-    volumes:
-    - ./react-app/src:/wldev/src
-    - ./react-app/dist:/wldev/dist
-    ports:
-    - "8080:8080"
   proxy: #serves the static code & proxies requests from /api to the api container
     build:
       context: ./react-app/
-      dockerfile: Dockerfile-dev-proxy
+      dockerfile: Dockerfile-dev
     volumes:
     - ./react-app/dist:/var/www/app
     - ./letsencrypt/live/demo.wikilogicfoundation.org:/root/ssl
