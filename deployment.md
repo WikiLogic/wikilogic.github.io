@@ -27,3 +27,10 @@ Automated testing is on the todo lis!
 ## Getting set up with server credentials
 
 To do - write this up without giving anything sensitive away
+
+## The live server
+
+ - **The root directory**: /var/www/wikilogic - within that is ./api and ./react-app (the two repos with the code needed to run WL in production).
+ - **The data**: tbc
+ - **The ssl cert**: `/etc/letsencrypt/live/demo.wikilogicfoundation.org/` [certbot](https://certbot.eff.org/docs/) puts a bunch of files in there, the most important are fullchain.pem and privkey.pem. The proxy container has a volume linked from the server's /etc/letsencrypt directory to the container's /root/ssl directory. The nginx config then looks into /root/ssl/live/demo.wikilogicfoundation.org/ for the relevant files
+
