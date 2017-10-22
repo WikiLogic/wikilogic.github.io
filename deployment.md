@@ -20,11 +20,17 @@ Certbot ?updates existing nginx configuration?
 
 _This should be the first thing you set up within the droplet as it's the most problematic._
 
- - Go to the certbot site and select the relevant install instructions (nginx on ubuntu 16.04)
+ - Go to the certbot site and select the relevant install instructions (other on ubuntu 16.04, _not nginx, we've already got our nginx set up - open invite to devops people to update these instructions by the way_)
+ - cd / mkdir: `/var/www/wikilogic` (_This is where all the application code is going to live_)
+ - run `sudo ufw allow 80` (_This opens up port 80 to the internet_)
+ - run `python -m SimpleHTTPServer 80` (_This runs a simple webserver and serves files from the current directory_)
+ - `certbot certonly --webroot -w /var/www/wikilogic -d alpha.wikilogicfoundation.com` it will ask for an email and a couple of yes / no questions.
+
+
  - Once you have finished running through the install steps you should have nginx running (`service nginx status` will let you know if it is)
  - try pinging the IP from your local. If this doesn't work double check the IP is correct.
  - copy a simple index.html file to `/var/www/html/` and try loading the IP of your droplet in the browser. The html file should load.
- - If everything worked you're ready to point your domain to the droplet's IP. We use alpha.wikilogicfoundation.org so that's the name we'll pass when it asks.
+ - If everything worked you're ready to point your domain to the droplet's IP. We use alpha.wikilogicfoundation.org. It might take a few minutes but eventually you should see your simple html file loading at your domain.
  - (I also ran `sudo ufw allow 80` but I have not confirmed if that is actually required)
  - run `certbot --nginx`
 
