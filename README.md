@@ -3,9 +3,14 @@
 
 ---
 
-Quick reference:
+Quick setup:
 
-`docker-compose -f docker-compose.dev.yml up`
+ - `mkdir wikilogic` _make a folder anywhere_
+ - `cd wikilogic` _go into that folder_
+ - `git clone https://github.com/WikiLogic/api.git` _clone the API repo_
+ - `git clone https://github.com/WikiLogic/react-app` _clone the APP repo_
+ - copy https://github.com/WikiLogic/wikilogic.github.io/blob/master/docker-compose.yml into this wikilogic folder
+ - `docker-compose up --build`
  
 ---
 
@@ -72,7 +77,7 @@ _If you would rather set everything up manually, or the automated set up isn't w
 
 ### How to run Wikilogic locally
 
-In your naormal terminal (or the docker one if you have a docker terminal), cd into the wikilogic dictory and run `docker-compose -f docker-compose.dev.yml up`. It's also up at the top of this page for quick reference later on.
+In your naormal terminal (or the docker one if you have a docker terminal), cd into the wikilogic dictory and run `docker-compose up`. It's also up at the top of this page for quick reference later on.
 
 The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
 ```

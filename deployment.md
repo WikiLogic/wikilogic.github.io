@@ -60,7 +60,7 @@ _Note we recommend keeping your own version of the docker-compose.yml file for p
 ## Step 1 - run the production container on your local
 
  - connect to your local machine:
- - run build: `docker-compose up --build`
+ - run build: ``docker-compose -f docker-compose.dev.yml up --build`
  - open [localhost](http://localhost/) and check your changes
 
 Automated testing is on the todo lis!
