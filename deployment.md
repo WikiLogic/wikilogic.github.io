@@ -22,6 +22,8 @@ _This should be the first thing you set up within the droplet as it's the most p
 
  - Go to the certbot site and select the relevant install instructions (other on ubuntu 16.04, _not nginx, we've already got our nginx set up - open invite to devops people to update these instructions by the way_)
  - cd / mkdir: `/var/www/wikilogic` (_This is where all the application code is going to live_)
+ - to check permissions run `namei -l /var/www/wikilogic`
+ - to set run `chmod 0755 wikilogic`
  - run `sudo ufw allow 80` (_This opens up port 80 to the internet_)
  - run `python -m SimpleHTTPServer 80` (_This runs a simple webserver and serves files from the current directory_)
  - `certbot certonly --webroot -w /var/www/wikilogic -d alpha.wikilogicfoundation.com` it will ask for an email and a couple of yes / no questions.
@@ -34,7 +36,8 @@ _This should be the first thing you set up within the droplet as it's the most p
  - (I also ran `sudo ufw allow 80` but I have not confirmed if that is actually required)
  - run `certbot --nginx`
 
-
+ - To stop the simple web server, run `fuser -n tcp 80` to get the process listening on 80
+ - then run `kill <process number>`
 
 
 ## Getting the code up onto the server
