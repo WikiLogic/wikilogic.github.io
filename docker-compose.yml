@@ -1,4 +1,7 @@
-# This is the local development version of docker-compose. We need access to everything so we expose all the ports!
+# This is the local development version of docker-compose. 
+# Auth turns off
+# SSL doesn't run
+# ports exposed
 version: '3'
 services:
   arango:
@@ -6,7 +9,7 @@ services:
     ports:
     - "8529:8529"
     environment:
-    - ARANGO_NO_AUTH=1
+    - ARANGO_ROOT_PASSWORD=wlarango
     volumes:
     - ./arangodb/data:/var/lib/arangodb
   api:
@@ -34,11 +37,9 @@ services:
       dockerfile: Dockerfile-dev
     volumes:
     - ./react-app/dist:/var/www/app
-    - ./letsencrypt/live/demo.wikilogicfoundation.org:/root/ssl
     links:
     - api
     depends_on:
     - api
     ports:
     - "80:80"
-    - "443:443"
