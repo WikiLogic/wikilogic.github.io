@@ -10,11 +10,27 @@ This describes the entire setup & deployment process for a new server. It assume
  - Log into digitaloean and create a new droplet
  - In the "One-click apps" select Docker 
  - Select the smallest droplet and a region near you. 
- - Select the relevant ssh key if you have one set up
- - Name the droplet (eg 'wikilogic')
+ - Select the relevant ssh key (hopefully you have one set up already!)
+ - Name the droplet (eg 'wikilogic' or 'play')
  - Create! Once it is finished you will be able to see the droplet's IP address. Keep this handy.
  
+## Getting WL running on the new droplet
+
+ - copy the [server setup script](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setup.sh) into the droplet
+    - `wget -O /root/setup.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setup.sh`
+ - run the script 
+    - `cd /root`
+    - `sh setup.sh`
+
+_The whole thing can take a few minutes, but when it's done (you should see a few green "done"s) you can open the droplet's IP in any browser and have WL running! For details on what that script is doing, open it up - it should be filled with explanatory comments._
+
+---
+
+========================== EVERYTHING BELOW IS OLD ==============================
+
 ## Set up the HTTPS / SSL cert using certbot
+
+THIS IS A TODO - need to set up a certbot script
 
 Certbot ?updates existing nginx configuration?
 
@@ -40,58 +56,13 @@ _This should be the first thing you set up within the droplet as it's the most p
  - then run `kill <process number>`
 
 
-## Getting the code up onto the server
-
-_Note we recommend keeping your own version of the docker-compose.yml file for production as it is likely to contain connection information you don't want to make public._
-
- - Connect to the droplet (via ssh, the web console provided by digitalocean, winscp, or your preferred method). 
- - Move into (/ create) `/var/www/wikilogic`. This is where the application code is going to live. 
- - `git clone https://github.com/WikiLogic/api.git`
- - `git clone https://github.com/WikiLogic/react-app.git`
- - copy your docker-compose.yml file into `/var/www/wikilogic` (eg via winscp)
  
 ## Setting up the HTTPS / SSL certificate with certbot
 
  - Go to the certbot site and select the relevant install instructions for nginx on ubuntu 16.04 (_note, `python -m SimpleHTTPServer` is a handy way to spin up a really simple web server serving the current directory_)
 
 
-
----
-
-========================== EVERYTHING BELOW IS OLD ==============================
-
-## Step 1 - run the production container on your local
-
- - connect to your local machine:
- - run build: ``docker-compose -f docker-compose.dev.yml up --build`
- - open [localhost](http://localhost/) and check your changes
-
-Automated testing is on the todo lis!
-
-## Step 2 - build to production
-
- - Production code is in:
-    - `./root/api`
-    - `./root/Neo4JProcedures`
-    - `./root/react-app`
- - connect to the production machine:
-    1. `docker-machine env wikilogic`
-    2. `eval $(docker-machine env wikilogic)`
- - ssh into the server `docker-machine ssh wikilogic`
- - cd into each repo and `git pull`
- - exit the ssh session `exit`
- - run a build `docker-compose up --build -d`
-
-## Getting set up with server credentials
-
-To do - write this up without giving anything sensitive away
-
-## The live server
-
- - **The root directory**: /var/www/wikilogic - within that is ./api and ./react-app (the two repos with the code needed to run WL in production).
- - **The data**: tbc
  - **The ssl cert**: `/etc/letsencrypt/live/demo.wikilogicfoundation.org/` [certbot](https://certbot.eff.org/docs/) puts a bunch of files in there, the most important are fullchain.pem and privkey.pem. The proxy container has a volume linked from the server's /etc/letsencrypt directory to the container's /root/ssl directory. The nginx config then looks into /root/ssl/live/demo.wikilogicfoundation.org/ for the relevant files
-
 
 
 ---
