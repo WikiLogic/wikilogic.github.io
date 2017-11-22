@@ -27,7 +27,7 @@ services:
     - ARANGODB_HOST=arango
     - ARANGODB_PORT=8529
     - ARANGODB_USERNAME=root
-    - ARANGODB_PASSWORD=
+    - ARANGODB_PASSWORD=wlarango
     - ARANGODB_DB=wl_db
     ports:
     - "3030:3030"
