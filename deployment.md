@@ -24,6 +24,21 @@ This describes the entire setup & deployment process for a new server. It assume
 
 _The whole thing can take a few minutes, but when it's done (you should see a few green "done"s) you can open the droplet's IP in any browser and have WL running! For details on what that script is doing, open it up - it should be filled with explanatory comments._
 
+## Running WL over HTTPS
+
+ - point your domain to the IP of the droplet running WL
+ - wait for the DNS propogation, can take a day or so. You know you're ready when your domain loads WL.
+ - in the 
+ - copy the [certbot setup script](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupcert.sh) into the droplet (NOTE you will have to replace our domain name with your own - TODO: turn this into a command line argument)
+    - `wget -O /root/setupcert.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupcert.sh`
+ - run the script
+    - `cd /root`
+    - `sh setupcert.sh`
+
+_The script installs and runs certbot. If successfull you should see a message saying "Congratulations! ...". If this is the case you're ready to swap the nginx config files._
+
+TODO: script to swap the nginx config files & setup docker container to handle it.
+
 ---
 
 ========================== EVERYTHING BELOW IS OLD ==============================
