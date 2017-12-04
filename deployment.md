@@ -40,6 +40,8 @@ _The script installs and runs certbot. If successfull you should see a message s
  - `wget -O /root/setupswap.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupswap.sh`
  - `cd /root`
  - `sh setupswap.sh`
+ - Connect to the proxy container `docker exec -ti wikilogic_proxy_1 bash`
+ - Reload nginx `nginx -s reload`
 
 TODO: script to swap the nginx config files & setup docker container to handle it.
 

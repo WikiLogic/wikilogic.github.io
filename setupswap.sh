@@ -11,5 +11,5 @@ mv nginx.conf nginx.old.conf
 mv nginx.https.conf nginx.conf
 
 #Now to restart the proxy server, connect to the proxy container and restart nginx!
-docker exec -ti wikilogic_proxy_1 bash
-nginx -s reload
+# docker exec -ti wikilogic_proxy_1 bash
+# nginx -s reload
