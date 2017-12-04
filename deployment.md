@@ -28,14 +28,18 @@ _The whole thing can take a few minutes, but when it's done (you should see a fe
 
  - point your domain to the IP of the droplet running WL
  - wait for the DNS propogation, can take a day or so. You know you're ready when your domain loads WL.
- - in the 
+ - When it shows up under your domain...
  - copy the [certbot setup script](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupcert.sh) into the droplet (NOTE you will have to replace our domain name with your own - TODO: turn this into a command line argument)
     - `wget -O /root/setupcert.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupcert.sh`
  - run the script
     - `cd /root`
     - `sh setupcert.sh`
 
-_The script installs and runs certbot. If successfull you should see a message saying "Congratulations! ...". If this is the case you're ready to swap the nginx config files._
+_The script installs and runs certbot. If successfull you should see a message saying "Congratulations! ...". Your HTTPS certificate should now exist on your droplet in /etc/letsencrypt/live/your.domain.com/. Fortunatly `/etc/letsencrypt/live` has been shared with the docker container so all you need to do now is swap the nginx.config file and restart the proxy server._
+
+ - `wget -O /root/setupswap.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupswap.sh`
+ - `cd /root`
+ - `sh setupswap.sh`
 
 TODO: script to swap the nginx config files & setup docker container to handle it.
 

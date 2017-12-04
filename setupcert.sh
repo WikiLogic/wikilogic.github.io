@@ -10,3 +10,7 @@ apt-get install python-certbot-nginx
 # the react app dist folder is shared with the static docker container as a volume so that should be good.
 # Note that you will also need the domain to be pointing to this box, DNS changes can take a while so you're going to be without https for a bit
 certbot certonly --webroot -w /var/www/wikilogic/react-app/dist -d alpha.wikilogicfoundation.org
+
+# If that works, there should be cert stuff in:
+# /etc/letsencrypt/live/alpha.wikilogicfoundation.org
+# That's on the droplet. The proxy docker container is expecting it to be in the same place.

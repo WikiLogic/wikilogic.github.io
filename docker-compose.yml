@@ -37,6 +37,8 @@ services:
       dockerfile: Dockerfile-dev
     volumes:
     - ./react-app/dist:/var/www/app
+    - /etc/letsencrypt/live:/etc/letsencrypt/live
+    - ./react-app/nginx:/etc/nginx
     links:
     - api
     depends_on:
