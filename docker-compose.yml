@@ -34,7 +34,7 @@ services:
   proxy: #serves the static code & proxies requests from /api to the api container
     build:
       context: ./react-app/
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile
     volumes:
     - ./react-app/dist:/var/www/app
     - /etc/letsencrypt/live:/etc/letsencrypt/live
