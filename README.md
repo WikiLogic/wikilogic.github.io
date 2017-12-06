@@ -19,12 +19,21 @@ _Tip - don't close the command line / docker terminal when it's running, if ther
 **For Apple:**
  - Contribute!
 
-
 If that all went well, or even to test if it all went well, try opening the following:
 
  - http://localhost/ for the app
  - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
  - http://localhost:7474 for the db (un & pw are set in the dockerfile)
+
+---
+
+## Front end setup
+
+The front end tools run on your local. The code is compiled into a dist directory that is shared with the docker containers.
+
+ - cd into the react-app repo
+ - `npm install`
+ - `npm start`
 
 ---
 
