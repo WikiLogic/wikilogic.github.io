@@ -15,7 +15,7 @@ services:
   api:
     build: 
       context: ./api/
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile
     volumes:
     - ./api/api-server.js:/var/www/api/api-server.js
     - ./api/src:/var/www/api/src
@@ -45,3 +45,4 @@ services:
     - api
     ports:
     - "80:80"
+    - "443:443"
