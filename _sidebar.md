@@ -1,7 +1,9 @@
 - [Home](/)
+- [Problems](/problems.md)
+- [Architecture](/architecture.md)
 - [Docker commands](dockercommands.md)
-- [Data Backups](backups.md)
 - [Deployment](deployment.md)
+- [Data Backups](backups.md)
 
 
 
