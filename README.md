@@ -1,20 +1,50 @@
 
 # Wikilogic Contributor Docs
 
----
-
-Quick setup:
-
- - `mkdir wikilogic` _make a folder anywhere_
- - `cd wikilogic` _go into that folder_
- - `git clone https://github.com/WikiLogic/api.git` _clone the API repo_
- - `git clone https://github.com/WikiLogic/react-app` _clone the APP repo_
- - copy https://github.com/WikiLogic/wikilogic.github.io/blob/master/docker-compose.yml into this wikilogic folder
- - `docker-compose up --build`
- 
----
-
 This site is aimed at those who wish to contribute, or just find out about, the technical side of Wikilogic. For information on why and what it is please refer to [www.wikilogicfoundation.org](http://www.wikilogicfoundation.org/).
+
+---
+
+## Quickstart:
+
+Have [Docker](https://www.docker.com/community-edition) installed, and [Node](https://nodejs.org) if you're looking to work on the front end.
+
+**For Windows:**
+ - make a folder somewhere, 
+ - copy [wikilogic-setup.bat](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/wikilogic-setup.bat) into that folder, 
+ - run it.
+ - [cd](https://www.unixtutorial.org/commands/cd/) into that folder and run docker: `docker-compose up --build` (note you may need to be in the docker for windows terminal)
+
+
+**For Apple:**
+ - Contribute!
+
+_Tip - don't close the docker console, if there are errors while you're developing you'll want to be seeing them as they happen._
+
+The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
+
+```
+db_1      | Starting Neo4j.
+db_1      | Started neo4j (pid 54). It is available at http://127.0.0.1:7474/
+arango_1  | 2017-09-14T01:24:36Z [1] INFO {syscall} file-descriptors (nofiles) hard limit is 1048576, soft limit is 1048576
+arango_1  | 2017-09-14T01:24:36Z [1] INFO Authentication is turned off, authentication for unix sockets is turned on
+api_1     | [nodemon] 1.12.0
+arango_1  | 2017-09-14T01:24:38Z [1] INFO using endpoint 'http+tcp://0.0.0.0:8529' for non-encrypted requests
+db_1      | There may be a short delay until the server is ready.
+db_1      | See /var/lib/neo4j/logs/neo4j.log for current status.
+db_1      | Stopping Neo4j.. stopped
+db_1      | Starting Neo4j.
+db_1      | 2017-09-14 01:24:50.882+0000 INFO  ======== Neo4j 3.0.11 ========
+db_1      | 2017-09-14 01:24:51.371+0000 INFO  Starting...
+db_1      | 2017-09-14 01:24:52.250+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+db_1      | 2017-09-14 01:24:56.546+0000 INFO  Started.c
+```
+
+If that all went well:
+
+ - http://localhost/ for the app
+ - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
+ - http://localhost:7474 for the db (un & pw are set in the dockerfile)
 
 ---
 
@@ -61,48 +91,6 @@ In development mode the ports are opened to make life a bit easier.
 If you're not comfortable digging into the main codebase, this docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io) and [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) has a repo for it's [WordPress theme](https://github.com/WikiLogic/foundation). Either of which would be less intimidating places to help out.
 
 ---
-
-## Local development set up
-
-The whole stack is orcastraited using [Docker](https://www.docker.com/community-edition) which you'll need to have installed. If you want to contribute to the front end you'll also need [Node](https://nodejs.org) set up.
-
-### How to get the code
-
-Create a directory somewhere for the wikilogic files to live and download the setup script:
-
- - [wikilogic-setup.bat](https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/wikilogic-setup.bat) for windows
- - ? for mac
-
-_If you would rather set everything up manually, or the automated set up isn't working for you, we have [layed out the process here](setup-manually.md)_
-
-### How to run Wikilogic locally
-
-In your naormal terminal (or the docker one if you have a docker terminal), cd into the wikilogic dictory and run `docker-compose up`. It's also up at the top of this page for quick reference later on.
-
-The first time you do this it'll take a few minutes and might look like it hangs a few times, give it a little time and if all has gone to plan you now have Wikilogic and all it's dev tooling up and running! You'll know it's time when you see something like this appear in the console that's running docker: 
-```
-db_1      | Starting Neo4j.
-db_1      | Started neo4j (pid 54). It is available at http://127.0.0.1:7474/
-arango_1  | 2017-09-14T01:24:36Z [1] INFO {syscall} file-descriptors (nofiles) hard limit is 1048576, soft limit is 1048576
-arango_1  | 2017-09-14T01:24:36Z [1] INFO Authentication is turned off, authentication for unix sockets is turned on
-api_1     | [nodemon] 1.12.0
-arango_1  | 2017-09-14T01:24:38Z [1] INFO using endpoint 'http+tcp://0.0.0.0:8529' for non-encrypted requests
-db_1      | There may be a short delay until the server is ready.
-db_1      | See /var/lib/neo4j/logs/neo4j.log for current status.
-db_1      | Stopping Neo4j.. stopped
-db_1      | Starting Neo4j.
-db_1      | 2017-09-14 01:24:50.882+0000 INFO  ======== Neo4j 3.0.11 ========
-db_1      | 2017-09-14 01:24:51.371+0000 INFO  Starting...
-db_1      | 2017-09-14 01:24:52.250+0000 INFO  Bolt enabled on 0.0.0.0:7687.
-db_1      | 2017-09-14 01:24:56.546+0000 INFO  Started.c
-```
-
-_Tip - don't close the docker console, if there are errors while you're developing you'll want to be seeing them as they happen._
-
- - http://localhost/ for the app
- - http://localhost/api for the api (check http://localhost/api/test to see it's running properly)
- - http://localhost:7474 for the db (un neo4j pw neo5j if you're running in dev mode, which you will be if you're following these instructions)
-
 
 ### Problems
 
