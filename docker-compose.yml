@@ -37,7 +37,7 @@ services:
       dockerfile: Dockerfile
     volumes:
     - ./react-app/dist:/var/www/app
-    - /etc/letsencrypt/live:/etc/letsencrypt/live
+    - /etc/letsencrypt:/etc/letsencrypt
     - ./react-app/nginx:/etc/nginx
     links:
     - api

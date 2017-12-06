@@ -20,7 +20,7 @@ This describes the entire setup & deployment process for a new server. It assume
     - `wget -O /root/setup.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setup.sh`
  - run the script 
     - `cd /root`
-    - `sh setup.sh`
+    - `sh setup.sh` (if it doesn't complete, try running it again)
 
 _The whole thing can take a few minutes, but when it's done (you should see a few green "done"s) you can open the droplet's IP in any browser and have WL running! For details on what that script is doing, open it up - it should be filled with explanatory comments._
 
@@ -35,7 +35,7 @@ _The whole thing can take a few minutes, but when it's done (you should see a fe
     - `cd /root`
     - `sh setupcert.sh`
 
-_The script installs and runs certbot. If successfull you should see a message saying "Congratulations! ...". Your HTTPS certificate should now exist on your droplet in /etc/letsencrypt/live/your.domain.com/. Fortunatly `/etc/letsencrypt/live` has been shared with the docker container so all you need to do now is swap the nginx.config file and restart the proxy server._
+_The script installs and runs certbot. You will have to give it a few inputs, mostly "ENTER" and "Y". If successfull you should see a message saying "Congratulations! ...". Your HTTPS certificate should now exist on your droplet in /etc/letsencrypt/live/your.domain.com/. Fortunatly `/etc/letsencrypt/live` has been shared with the docker container so all you need to do now is swap the nginx.config file and restart the proxy server._
 
  - `wget -O /root/setupswap.sh https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/setupswap.sh`
  - `cd /root`
