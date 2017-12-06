@@ -24,6 +24,6 @@ curl https://raw.githubusercontent.com/WikiLogic/wikilogic.github.io/master/dock
     echo }
 )> "./testing/api-credentials.json"
 
-cd api
-call npm i
-pause
+REM cd api
+REM call npm i
+REM pause
