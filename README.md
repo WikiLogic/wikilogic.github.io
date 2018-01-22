@@ -38,3 +38,9 @@ The front end tools run on your local. The code is compiled into a dist director
 ---
 
 If you're not comfortable digging into the main codebase, this docs site has [it's own repo](https://github.com/WikiLogic/wikilogic.github.io) and [wikilogicfoundation.org](http://www.wikilogicfoundation.org/) has a repo for it's [WordPress theme](https://github.com/WikiLogic/foundation). We need help with those areas as well!
+
+---
+
+ideas:
+
+2 people disagree - make a bet on if something is correct or not - build something around this. Bet against WL?
