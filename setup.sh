@@ -3,7 +3,7 @@ mkdir -p "/var/www/wikilogic"
 
 # Jump in there and clone the code
 cd /var/www
-git clone git clone --recurse-submodules -j8 https://github.com/WikiLogic/infrastructure.git wikilogic
+git clone --recursive https://github.com/WikiLogic/infrastructure.git wikilogic
 
 # Open the ports to the internet!
 sudo ufw allow 80
