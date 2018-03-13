@@ -10,7 +10,7 @@ sudo ufw allow 80
 sudo ufw allow 443
 
 # Turn it on. When you see a few parallel lines like "======>" growing, you're into the docker part.
-cd /var/www/wikilogic
+cd /var/www/wikilogic/_configs/microservices-http
 docker-compose up -d
 
 # TODO: certbot script
